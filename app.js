@@ -98,7 +98,6 @@ function displayPerson(person){
   personInfo += "Occupation: " + person.occupation + "\n";
   personInfo += "Parents: " + person.parents + "\n";
   personInfo += "Current Spouse: " + person.currentSpouse + "\n";
-  personInfo += "Weight: " + person.weight + "\n"
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
