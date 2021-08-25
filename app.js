@@ -125,10 +125,5 @@ function displayFamily(people){
   let personFamily;
   if(people.person.includes(person.id) === "parents" || "spouse" || "children"){
     alert(personFamily)
-<<<<<<< HEAD
-  }}
-=======
-  }}
-
-
->>>>>>> db17b960bf3d045750d7f19b41a281044b690687
+  }
+}
