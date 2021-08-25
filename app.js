@@ -37,11 +37,12 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-      displayPerson(person);
     // TODO: get person's info
+    displayPerson(person)
     break;
     case "family":
     // TODO: get person's family
+    displayFamily(person)
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -55,6 +56,12 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
+//function displayFam(people){
+  //let foundFam = people.filter(function(person){
+  //  if(person.id === spouse);
+  //})
+
+//}
 
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", chars);
@@ -84,6 +91,13 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Date of Birth: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+  personInfo += "Parents: " + person.parents + "\n";
+  personInfo += "Current Spouse: " + person.currentSpouse + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
@@ -105,3 +119,9 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+
+function displayFamily(people){
+  let personFamily;
+  if(people.person.includes(person.id) === "parents" || "spouse" || "children"){
+    alert(personFamily)
+  }}
