@@ -37,11 +37,12 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-      displayPerson(person);
     // TODO: get person's info
+    displayPerson(person)
     break;
     case "family":
     // TODO: get person's family
+    displayFamily(person)
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -84,6 +85,7 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Weight: " + person.weight + "\n"
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
@@ -105,3 +107,11 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+
+function displayFamily(people){
+  let personFamily;
+  if(people.person.includes(person.id) === "parents" || "spouse" || "children"){
+    alert(personFamily)
+  }}
+
+
