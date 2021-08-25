@@ -98,6 +98,7 @@ function displayPerson(person){
   personInfo += "Occupation: " + person.occupation + "\n";
   personInfo += "Parents: " + person.parents + "\n";
   personInfo += "Current Spouse: " + person.currentSpouse + "\n";
+  personInfo += "Weight: " + person.weight + "\n"
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
@@ -124,4 +125,10 @@ function displayFamily(people){
   let personFamily;
   if(people.person.includes(person.id) === "parents" || "spouse" || "children"){
     alert(personFamily)
+<<<<<<< HEAD
   }}
+=======
+  }}
+
+
+>>>>>>> db17b960bf3d045750d7f19b41a281044b690687
