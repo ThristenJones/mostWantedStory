@@ -42,7 +42,8 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-    displayFamily(person)
+    let foundFamMem = displayFamily(person,people)
+    displayPeople(foundFamMem)
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -120,9 +121,13 @@ function chars(input){
   return true; // default validation only
 }
 
-function displayFamily(people){
-  let personFamily;
-  if(people.person.includes(person.id) === "parents" || "spouse" || "children"){
-    alert(personFamily)
-  }
+function displayFamily(person,people){
+  let foundSpouse = people.filter(function(item){
+    if(person.id === item.currentSpouse){
+      return true;
+    }
+  })
+  return foundSpouse;
+  
 }
+  
