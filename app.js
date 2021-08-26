@@ -44,6 +44,13 @@ function mainMenu(person, people){
     // TODO: get person's family
     let foundFamMem = displayFamily(person,people)
     displayPeople(foundFamMem)
+
+    foundFamMem = displayChildren(person,people)
+    displayPeople(foundFamMem)
+
+    foundFamMem = displayParents(person,people)
+    displayPeople(foundFamMem)
+
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -57,12 +64,6 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
-//function displayFam(people){
-  //let foundFam = people.filter(function(person){
-  //  if(person.id === spouse);
-  //})
-
-//}
 
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", chars);
@@ -92,13 +93,14 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "gender:" + person.gender + "\n"
   personInfo += "Weight: " + person.weight + "\n";
   personInfo += "Date of Birth: " + person.dob + "\n";
   personInfo += "Height: " + person.height + "\n";
   personInfo += "Eye Color: " + person.eyeColor + "\n";
   personInfo += "Occupation: " + person.occupation + "\n";
   personInfo += "Parents: " + person.parents + "\n";
-  personInfo += "Current Spouse: " + person.currentSpouse + "\n";
+  personInfo += "Current Spouse: " + person.currentSpouse + "\n"
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
@@ -122,12 +124,34 @@ function chars(input){
 }
 
 function displayFamily(person,people){
+  
   let foundSpouse = people.filter(function(item){
     if(person.id === item.currentSpouse){
       return true;
     }
+    
   })
   return foundSpouse;
-  
-}
-  
+  }
+
+  function displayChildren(person,people){
+
+    let foundChildren = people.filter(function(item){
+      if(person.id === item.parents[0] || person.id === item.parents[1]){
+        return true;
+      }
+    })
+    return foundChildren;
+  }
+
+  function displayParents(person,people){
+    let foundParents = people.filter(function(item){
+      if(person.parents[0] === item.id || person.parents[1] === item.id){
+        return true;
+      }
+    })
+    return foundParents;
+  }
+
+
+
