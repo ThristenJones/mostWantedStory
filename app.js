@@ -42,13 +42,16 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
+    // let foundFamMem = displayFamily(person,people)
+    // displayPeople(foundFamMem)
+
+    // foundFamMem = displayChildren(person,people)
+    // displayPeople(foundFamMem)
+
+    // foundFamMem = displayParents(person,people)
+    // displayPeople(foundFamMem)
+
     let foundFamMem = displayFamily(person,people)
-    displayPeople(foundFamMem)
-
-    foundFamMem = displayChildren(person,people)
-    displayPeople(foundFamMem)
-
-    foundFamMem = displayParents(person,people)
     displayPeople(foundFamMem)
 
     break;
@@ -153,5 +156,14 @@ function displayFamily(person,people){
     return foundParents;
   }
 
+  function displayFamily(person,people){
+    let foundFamily = people.filter(function(item){
+      if(person.parents[0] === item.id || person.parents[1] === item.id || person.id === item.parents[0] || person.id === item.parents[1] || person.id === item.currentSpouse) {
+        alert("My wifes name is" + person.id === item.currentSpouse)
+        return true;
+      }
+    })
+    return foundFamily;
+  }
 
 
