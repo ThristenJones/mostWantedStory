@@ -12,6 +12,7 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
+      searchTraits(people)
       // TODO: search by traits
       break;
       default:
@@ -20,7 +21,7 @@ function app(people){
   }
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults, people);
+  mainMenu(searchResults[0], people);
 }
 
 // Menu function to call once you find who you are looking for
@@ -38,12 +39,22 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     // TODO: get person's info
+    displayPerson(person)
     break;
     case "family":
     // TODO: get person's family
+    let foundFamMem = displayFamily(person,people)
+    displayPeople(foundFamMem)
+
+
+    foundFamMem = displayParents(person,people)
+    displayPeople(foundFamMem)
+
     break;
     case "descendants":
     // TODO: get person's descendants
+    foundFamMem = displayChildren(person,people)
+    displayPeople(foundFamMem)
     break;
     case "restart":
     app(people); // restart
@@ -83,6 +94,14 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "gender:" + person.gender + "\n"
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Date of Birth: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+  personInfo += "Parents: " + person.parents + "\n";
+  personInfo += "Current Spouse: " + person.currentSpouse + "\n"
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
@@ -104,3 +123,55 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+
+function displayFamily(person,people){
+  
+  let foundSpouse = people.filter(function(item){
+    if(person.id === item.currentSpouse){
+      return true;
+    }
+    
+  })
+  return foundSpouse;
+  }
+
+  function displayChildren(person,people){
+
+    let foundChildren = people.filter(function(item){
+      if(person.id === item.parents[0] || person.id === item.parents[1]){
+        return true;
+      }
+    })
+    return foundChildren;
+  }
+
+  function displayParents(person,people){
+    let foundParents = people.filter(function(item){
+      if(person.parents[0] === item.id || person.parents[1] === item.id){
+        return true;
+      }
+    })
+    return foundParents;
+  }
+
+  // 
+  // !!!!!!!!!!!!!!!!!!!Below are all the Traits Functions!!!!!!!!!!!!!
+  // 
+
+
+function searchTraits(people){
+    let searchResults = people;
+    let searchChoice = prompt('Choose something?\n1. Gender\n2. Weight\n3. height', chars);
+      switch(searchChoice){
+        case '1':
+          displayGender(searchResults)
+          break;
+      }
+  }
+
+  function displayGender(people){
+    alert(people.map(function(person){
+      return "Name: " + person.firstName + " " + person.lastName + " // " + "Gender: " + person.gender;
+    }).join("\n"));
+  }
+
