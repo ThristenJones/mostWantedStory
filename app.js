@@ -43,24 +43,11 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-<<<<<<< HEAD
     let foundFamMem = displayFamily(person,people)
     displayPeople(foundFamMem)
 
 
     foundFamMem = displayParents(person,people)
-=======
-    // let foundFamMem = displayFamily(person,people)
-    // displayPeople(foundFamMem)
-
-    // foundFamMem = displayChildren(person,people)
-    // displayPeople(foundFamMem)
-
-    // foundFamMem = displayParents(person,people)
-    // displayPeople(foundFamMem)
-
-    let foundFamMem = displayFamily(person,people)
->>>>>>> d4de7582555cbd04fcbc079371992fb77d7c7ff7
     displayPeople(foundFamMem)
 
     break;
@@ -167,7 +154,6 @@ function displayFamily(person,people){
     return foundParents;
   }
 
-<<<<<<< HEAD
   // 
   // !!!!!!!!!!!!!!!!!!!Below are all the Traits Functions!!!!!!!!!!!!!
   // 
@@ -175,29 +161,73 @@ function displayFamily(person,people){
 
 function searchTraits(people){
     let searchResults = people;
-    let searchChoice = prompt('Choose something?\n1. Gender\n2. Weight\n3. height', chars);
+    let searchChoice = promptFor('Choose a trait to search by.\nEnter corresponding number: \n1. Gender\n2. Weight\n3. Height\n4. Occupations\n5. Eye Color\n6. Date of Birth', chars);
       switch(searchChoice){
         case '1':
           displayGender(searchResults)
           break;
-      }
+        case '2':
+          displayWeight(searchResults)
+          break;
+        case '3':
+          displayHeight(searchResults)
+          break;
+        case '4':
+          displayOccupation(searchResults)
+          break;
+        case '5':
+          displayEyeColor(searchResults)
+          break;  
+        case '6':
+          displayDob(searchResults)
+          break;       
+        
+      } 
   }
+
+  // ******* GENDER **********
 
   function displayGender(people){
     alert(people.map(function(person){
       return "Name: " + person.firstName + " " + person.lastName + " // " + "Gender: " + person.gender;
     }).join("\n"));
   }
-=======
-  function displayFamily(person,people){
-    let foundFamily = people.filter(function(item){
-      if(person.parents[0] === item.id || person.parents[1] === item.id || person.id === item.parents[0] || person.id === item.parents[1] || person.id === item.currentSpouse) {
-        alert("My wifes name is" + person.id === item.currentSpouse)
-        return true;
-      }
-    })
-    return foundFamily;
+
+  // ******* WEIGHT **********
+
+  function displayWeight(people){
+    alert(people.map(function(person){
+      return "Name: " + person.firstName + " " + person.lastName + " // " + "Weight: " + person.weight;
+    }).join("\n"));
   }
 
->>>>>>> d4de7582555cbd04fcbc079371992fb77d7c7ff7
+  // ******* Height **********
 
+  function displayHeight(people){
+    alert(people.map(function(person){
+      return "Name: " + person.firstName + " " + person.lastName + " // " + "Height: " + person.height;
+    }).join("\n"));
+  }
+
+   // ******* Occupation ********** 
+
+   function displayOccupation(people){
+    alert(people.map(function(person){
+      return "Name: " + person.firstName + " " + person.lastName + " // " + "Occupation: " + person.occupation;
+    }).join("\n"));
+  }
+
+  // ******* Eye Color **********
+
+  function displayEyeColor(people){
+    alert(people.map(function(person){
+      return "Name: " + person.firstName + " " + person.lastName + " // " + "Eye Color: " + person.eyeColor;
+    }).join("\n"));
+  }
+  // ******* Date of Birth **********
+
+  function displayDob(people){
+    alert(people.map(function(person){
+      return "Name: " + person.firstName + " " + person.lastName + " // " + "Date of Birth: " + person.dob;
+    }).join("\n"));
+  }
