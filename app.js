@@ -12,7 +12,8 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      searchTraits(people)
+      searchResults = searchTraits(people)
+      
       // TODO: search by traits
       break;
       default:
@@ -161,61 +162,104 @@ function displayFamily(person,people){
 
 function searchTraits(people){
     let searchResults = people;
+    while (searchResults.length > 1){
     let searchChoice = promptFor('Choose a trait to search by.\nEnter corresponding number: \n1. Gender\n2. Weight\n3. Height\n4. Occupations\n5. Eye Color\n6. Date of Birth', chars);
       switch(searchChoice){
         case '1':
-          displayGender(searchResults)
+          searchResults = displayGender(searchResults) 
+          displayPeople(searchResults)
           break;
+          // switch(searchChoice){
+          // //   case '1':
+          //     let weightSearch = displayWeight(searchResults)
+          //     displayPeople(weightSearch)
+          //     break;
+          // }
         case '2':
-          displayWeight(searchResults)
+          searchResults = displayWeight(searchResults)
+          displayPeople(searchResults)
           break;
         case '3':
-          displayHeight(searchResults)
+          searchResults = displayHeight(searchResults)
+          displayPeople(searchResults)
           break;
         case '4':
-          displayOccupation(searchResults)
+          searchResults = displayOccupation(searchResults)
+          displayPeople(searchResults)
           break;
         case '5':
-          displayEyeColor(searchResults)
+          searchResults = displayEyeColor(searchResults)
+          displayPeople(searchResults)
           break;  
-        case '6':
-          displayDob(searchResults)
-          break;       
-        
-      } 
+    
+      }
+    }
+        // for(let i = 0; i < searchResults.length; i++);
+        // while(searchResults.length < 1){
+        return searchResults;
+
+
   }
+
 
   // ******* GENDER **********
 
   function displayGender(people){
-    alert(people.map(function(person){
-      return "Name: " + person.firstName + " " + person.lastName + " // " + "Gender: " + person.gender;
-    }).join("\n"));
-  }
+    let genderPrompt = promptFor("What is the Gender you are searching for?", chars);
+    let genderSearch = people.filter(function(person){
+      if(person.gender === genderPrompt){
+        return true;
+      }else{
+        return false;
+      }
+    })
+      return genderSearch
+    }
+
+
 
   // ******* WEIGHT **********
 
   function displayWeight(people){
-    alert(people.map(function(person){
-      return "Name: " + person.firstName + " " + person.lastName + " // " + "Weight: " + person.weight;
-    }).join("\n"));
+    let weightPrompt = promptFor("What is the weight of the person you are searching for in pounds?", chars)
+    let weightSearch = people.filter(function(person){
+      if(person.weight == weightPrompt){
+        return true;
+      }else{
+        return false;
+      }
+    })
+    return weightSearch
   }
 
   // ******* Height **********
 
   function displayHeight(people){
-    alert(people.map(function(person){
-      return "Name: " + person.firstName + " " + person.lastName + " // " + "Height: " + person.height;
-    }).join("\n"));
-  }
+    let heightPrompt = promptFor('What is the height of the person you are searching for?', chars);
+    let heightSearch = people.filter(function(person){
+      if(person.height == heightPrompt){
+        return true;
+      }else{
+        return false;
+      }
+    })
+      return heightSearch
+    }
 
    // ******* Occupation ********** 
 
    function displayOccupation(people){
-    alert(people.map(function(person){
-      return "Name: " + person.firstName + " " + person.lastName + " // " + "Occupation: " + person.occupation;
-    }).join("\n"));
+    let occuPrompt = promptFor("What is the occupation of the person you are searching for?", chars)
+    let occuSearch = people.filter(function(person){
+      if(person.occupation == occuPrompt){
+        return true;
+      }else{
+        return false;
+      }
+    })
+    return occuSearch
   }
+
 
   // ******* Eye Color **********
 
@@ -224,10 +268,4 @@ function searchTraits(people){
       return "Name: " + person.firstName + " " + person.lastName + " // " + "Eye Color: " + person.eyeColor;
     }).join("\n"));
   }
-  // ******* Date of Birth **********
 
-  function displayDob(people){
-    alert(people.map(function(person){
-      return "Name: " + person.firstName + " " + person.lastName + " // " + "Date of Birth: " + person.dob;
-    }).join("\n"));
-  }
